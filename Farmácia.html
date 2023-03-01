@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Medicamento(nome, valor, quantidade) {
+            this.nome = nome;
+            this.valor = valor;
+            this.quantidade = quantidade;
+        }
+        let estoque = []; 
+        function cadastrarMedicamento() {
+            var nome = prompt("Digite o nome do medicamento: ");
+            var valor = parseFloat(prompt("Digite o valor do medicamento: "));
+            var quantidade = parseInt(prompt("Digite a quantidade: "));
+            estoque.push(new Medicamento(nome, valor, quantidade));
+        }
+        function atualizarEstoque() {
+            var nome = prompt("Digite o nome do medicamento que deseja atualizar: ");
+            var quantidade = parseInt(prompt("Digite a nova quantidade: "));
+                 for (var i = 0; i < estoque.length; i++) {
+                    if (estoque[i].nome === nome) {
+                         estoque[i].quantidade = quantidade;
+                        break;
+            }
+        }
+    }
+        function excluirMedicamento() {
+            var nome = prompt("Digite o nome do medicamento que deseja excluir: ");
+
+        for (var i = 0; i < estoque.length; i++) {
+            if (estoque[i].nome === nome) {
+                estoque.splice(i, 1);
+                return;
+                break;  
+            }
+        }
+     }
+        while (true) {
+            let opcao = prompt("Selecione uma opção:\n1 - Cadastrar medicamento\n2 - Atualizar estoque\n3 - Excluir medicamento\n4 - Ver estoque\n5 - Sair");
+
+        switch (opcao) {
+            case "1":
+                cadastrarMedicamento();
+                break;
+            case "2":
+                atualizarEstoque();
+                break;
+            case "3":
+                excluirMedicamento();
+                break;
+            case "4":
+                var estoqueInfo = "";
+                var totalQuantidade = 0;
+
+            for (var i = 0; i < estoque.length; i++) {
+                estoqueInfo += estoque[i].nome + " - R$" + estoque[i].valor.toFixed(2) + " - " + estoque[i].quantidade + " unidades\n";
+                totalQuantidade += estoque[i].quantidade;
+            }
+
+            alert("Lista de medicamentos:\n\n" + estoqueInfo + "\nTotal de produtos em estoque: " + totalQuantidade);
+            break;
+        case "5":
+            alert('Saindo do Sistema...\n\n Obrigado, até logo!!')
+            break;
+        default:
+            alert("Opção inválida. Por favor, escolha uma opção válida.");
+            break;
+        }
+    }
+
+
+
+    </script>
+</body>
+</html>

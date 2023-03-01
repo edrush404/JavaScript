@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        jogar()
+    function jogar(){
+        let contador = 0
+        while (contador < 10){
+            let n2 = gerarNumeroAleatorio();
+            let n1 = parseInt(prompt('Escolha um numero de 0 a 100'))
+            verificarAdivinhacao(n1, n2);
+            contador ++;
+        }
+    }
+    function gerarNumeroAleatorio() {
+        return Math.round(Math.random() * 99) + 1;
+    }
+
+    
+    function verificarAdivinhacao(numeroAdivinhado, numeroAleatorio) {
+     if (numeroAdivinhado === numeroAleatorio) {
+        alert("Parabéns, você acertou o número!");
+    } else if (numeroAdivinhado < numeroAleatorio) {
+        alert(numeroAdivinhado + "\nO número adivinhado é menor que o número aleatório.-> " + numeroAleatorio);
+    } else {
+        alert(numeroAdivinhado + "\nO número adivinhado é maior que o número aleatório.-> " + numeroAleatorio);
+
+    }
+}
+
+
+
+    </script>
+</body>
+</html>
